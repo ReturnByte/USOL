@@ -3,6 +3,7 @@
 **Universal System Optimization Layer** — um frontend colorido, com ícones e funcionalidades extras para o APT.
 
 ![usol -h](screenshots/01-help.svg)
+<p><em>Tela de ajuda do <code>usol -h</code>: todos os comandos organizados por categoria, com ícone e descrição.</em></p>
 
 ## Cansado do APT?
 
@@ -114,71 +115,73 @@ usol doctor                     # verifica a saúde do sistema de pacotes
 
 ## Screenshots
 
-<details>
+Uma captura de cada comando do USOL, com uma breve explicação do que ele faz.
+
+<details open>
 <summary><strong>Gerenciamento de pacotes</strong> (update, upgrade, install, remove...)</summary>
 
-**`usol update`**
+**`usol update`** — atualiza a lista de pacotes disponíveis nos repositórios configurados (equivalente ao `apt update`).
 ![usol update](screenshots/18-update.svg)
 
-**`usol upgrade --dry-run`**
+**`usol upgrade --dry-run`** — simula a atualização dos pacotes instalados e mostra o que seria feito, sem aplicar nada.
 ![usol upgrade](screenshots/09-upgrade.svg)
 
-**`usol full-upgrade --dry-run`**
+**`usol full-upgrade --dry-run`** — simula uma atualização completa do sistema (equivalente ao `apt full-upgrade`), inclusive quando é preciso instalar ou remover dependências.
 ![usol full-upgrade](screenshots/10-full-upgrade.svg)
 
-**`usol install cowsay --dry-run`**
+**`usol install cowsay --dry-run`** — mostra a tabela de simulação antes de instalar: pacote, versão e o que vai acontecer, sem alterar o sistema.
 ![usol install](screenshots/06-install.svg)
 
-**`usol remove htop --dry-run`**
+**`usol remove htop --dry-run`** — simula a remoção de um pacote, mantendo os arquivos de configuração.
 ![usol remove](screenshots/07-remove.svg)
 
-**`usol purge htop --dry-run`**
+**`usol purge htop --dry-run`** — simula a remoção completa de um pacote, incluindo seus arquivos de configuração.
 ![usol purge](screenshots/08-purge.svg)
 
-**`usol autoremove --dry-run`**
+**`usol autoremove --dry-run`** — simula a limpeza de pacotes instalados automaticamente como dependência e que não são mais necessários.
 ![usol autoremove](screenshots/11-autoremove.svg)
 
-**`usol autopurge --dry-run`**
+**`usol autopurge --dry-run`** — mesma limpeza automática do `autoremove`, mas também purga as configurações dos pacotes órfãos.
 ![usol autopurge](screenshots/12-autopurge.svg)
 
-**`usol clean`**
+**`usol clean`** — limpa o cache local de pacotes `.deb` já baixados, liberando espaço em disco.
 ![usol clean](screenshots/19-clean.svg)
 
 </details>
 
-<details>
+<details open>
 <summary><strong>Consulta</strong> (show, search, list, history)</summary>
 
-**`usol show curl`**
+**`usol show curl`** — exibe os detalhes completos de um pacote (versão, dependências, descrição, tamanho), com os campos destacados em cores.
 ![usol show](screenshots/04-show.svg)
 
-**`usol search curl`**
+**`usol search curl`** — pesquisa pacotes pelo nome ou descrição, marcando com ● os que já estão instalados.
 ![usol search](screenshots/03-search.svg)
 
-**`usol list --upgradable`**
+**`usol list --upgradable`** — lista todos os pacotes que têm uma atualização disponível.
 ![usol list](screenshots/05-list.svg)
 
-**`usol history --limit 6`**
+**`usol history --limit 6`** — mostra o histórico de operações do APT (instalações, remoções, atualizações) de forma legível, com data e comando executado.
 ![usol history](screenshots/13-history.svg)
 
 </details>
 
-<details>
+<details open>
 <summary><strong>Extras USOL</strong> (info, doctor, stats, size, fetch)</summary>
 
-**`usol info`**
+**`usol info`** — painel com informações do sistema: distribuição, kernel, uptime, quantidade de pacotes instalados/atualizáveis e tamanho do cache do APT.
 ![usol info](screenshots/02-info.svg)
 
-**`usol doctor`**
+**`usol doctor`** — diagnóstico rápido de saúde do sistema de pacotes: pacotes quebrados, inconsistência de dependências, pacotes retidos e órfãos.
 ![usol doctor](screenshots/14-doctor.svg)
 
-**`usol stats`**
+**`usol stats`** — estatísticas gerais dos pacotes instalados, incluindo um ranking visual dos maiores em espaço ocupado.
 ![usol stats](screenshots/15-stats.svg)
 
-**`usol size --top 8`**
+**`usol size --top 8`** — lista os pacotes que mais ocupam espaço em disco, do maior para o menor.
 ![usol size](screenshots/16-size.svg)
 
-**`usol fetch`**
+**`usol fetch`** — mede a latência de resposta de cada espelho (mirror) configurado no `sources.list` e ranqueia por velocidade.
 ![usol fetch](screenshots/17-fetch.svg)
 
 </details>
