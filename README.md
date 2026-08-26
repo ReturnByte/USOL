@@ -50,6 +50,39 @@ pip install --user rich
 
 ## Instalação
 
+### Automatizada (recomendado)
+
+O projeto tem um instalador (`install.sh`) que faz tudo por você: detecta o sistema
+operacional, verifica CPU/memória/espaço em disco, identifica o que falta para o
+USOL funcionar (Python, `rich`, ferramentas do APT) e pergunta antes de instalar
+qualquer pacote. Todo o processo aparece dentro de uma janela de terminal simulada,
+em modo texto, e termina com um log completo do que foi feito.
+
+![Instalador - deteccao](screenshots/20-installer-detect.svg)
+![Instalador - resumo](screenshots/21-installer-summary.svg)
+
+```bash
+# 1. copie o projeto para a pasta de scripts
+git clone <url-do-repositorio> ~/scripts/USOL
+cd ~/scripts/USOL
+
+# 2. rode o instalador
+./install.sh
+```
+
+O que o `install.sh` faz, em ordem:
+
+1. **Detecta o sistema** — confirma que é uma distro baseada em APT/dpkg (Debian, Ubuntu, Kali, Parrot, Mint...) e mostra kernel/arquitetura.
+2. **Verifica recursos** — quantidade de processadores, memória RAM (total/disponível) e espaço livre em disco.
+3. **Identifica o que falta** — Python 3.8+, a biblioteca `rich` e as ferramentas `apt-get`/`apt-cache`/`dpkg`.
+4. **Pergunta antes de instalar** — se algo estiver faltando, lista os pacotes e só instala (`apt-get install`) com a sua confirmação.
+5. **Instala o USOL** — copia os arquivos para `~/.local/share/usol` e cria o atalho executável `~/.local/bin/usol`.
+6. **Verifica e mostra o log final** — roda `usol --version` e imprime (além de salvar em `~/.local/share/usol/install.log`) um resumo com tudo o que foi detectado/instalado e onde o USOL ficou no sistema.
+
+> Rode sempre a partir da pasta do projeto (`usol.py` precisa estar ao lado de `install.sh`).
+
+### Manual
+
 ```bash
 # 1. copie o projeto para a pasta de scripts
 git clone <url-do-repositorio> ~/scripts/USOL
@@ -183,6 +216,17 @@ Uma captura de cada comando do USOL, com uma breve explicação do que ele faz.
 
 **`usol fetch`** — mede a latência de resposta de cada espelho (mirror) configurado no `sources.list` e ranqueia por velocidade.
 ![usol fetch](screenshots/17-fetch.svg)
+
+</details>
+
+<details open>
+<summary><strong>Instalador</strong> (install.sh)</summary>
+
+**`./install.sh`** — detecção do sistema, dos recursos (CPU/RAM/disco) e das dependências, tudo dentro de uma janela de terminal simulada.
+![instalador - deteccao](screenshots/20-installer-detect.svg)
+
+**`./install.sh`** (continuação) — instalação dos arquivos, verificação e log final com tudo o que foi feito e onde o USOL foi instalado.
+![instalador - resumo](screenshots/21-installer-summary.svg)
 
 </details>
 
